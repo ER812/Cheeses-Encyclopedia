@@ -18,7 +18,7 @@ class CheesesController < ApplicationController
     @cheese = Cheese.new(cheese_params)
 
     if @cheese.save
-      render json: @cheese, status: :created, location: @cheese
+      render json: @cheese, status: :created
     else
       render json: @cheese.errors, status: :unprocessable_entity
     end

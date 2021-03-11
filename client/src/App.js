@@ -32,16 +32,16 @@ import {
   getAllCheeses,
   postCheese,
   putCheese,
-} from "../services/Cheeses";
-import { getAllFlavors } from "../services/flavors";
-import Cheeses from "../screens/Cheeses";
-import Flavors from "../screens/Flavors";
-import CheeseCreate from "../screens/CheeseCreate";
-import CheeseEdit from "../screens/CheeseEdit";
-import CheeseDetail from "../screens/CHeeseDetail";
+} from "./services/cheeses";
+// import { getAllFlavors } from "./services/flavors";
+import Cheeses from "./screens/Cheeses";
+import Flavors from "./screens/Flavors";
+import CheeseCreate from "./screens/CheeseCreate";
+import CheeseEdit from "./screens/CheeseEdit";
+import CheeseDetail from "./screens/CheeseDetail";
 
 export default function App(props) {
-  const [cheese, setCheeses] = useState([]);
+  const [cheeses, setCheeses] = useState([]);
   const [flavors, setFlavors] = useState([]);
   const { currentUser } = props;
   const history = useHistory();
@@ -54,13 +54,13 @@ export default function App(props) {
     fetchCheeses();
   }, []);
 
-  useEffect(() => {
-    const fetchFlavors = async () => {
-      const flavorsList = await getAllFlavors();
-      setFlavors(flavorsList);
-    };
-    fetchFlavors();
-  }, []);
+  // useEffect(() => {
+  //   const fetchFlavors = async () => {
+  //     // const flavorsList = await getAllFlavors();
+  //     setFlavors(flavorsList);
+  //   };
+  //   fetchFlavors();
+  // }, []);
 
   const handleCreate = async (formData) => {
     const newCheese = await postCheese(formData);
@@ -75,7 +75,7 @@ export default function App(props) {
 
   const handleUpdate = async (id, formData) => {
     const updatedCheese = await putCheese(id, formData);
-    setFoods((prevState) =>
+    setCheeses((prevState) =>
       prevState.map((cheese) => {
         return cheese.id === Number(id) ? updatedCheese : cheese;
       })
@@ -86,14 +86,14 @@ export default function App(props) {
   return (
     <Switch>
       {!currentUser && <Redirect to="/" />}
-      <Route path="/foods/new">
-        <FoodCreate handleCreate={handleCreate} />
+      <Route path="/cheeses/new">
+        <CheeseCreate handleCreate={handleCreate} />
       </Route>
-      <Route path="/foods/:id/edit">
-        <FoodEdit cheeses={cheeses} handleUpdate={handleUpdate} />
+      <Route path="/cheeses/:id/edit">
+        <CheeseEdit cheeses={cheeses} handleUpdate={handleUpdate} />
       </Route>
       <Route path="/cheeses/:id">
-        <FoodDetail flavors={flavors} />
+        <CheeseDetail flavors={flavors} />
       </Route>
       <Route path="/cheeses">
         <Cheeses
