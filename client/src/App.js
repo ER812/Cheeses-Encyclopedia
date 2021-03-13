@@ -85,7 +85,7 @@ export default function App(props) {
 
   return (
     <Switch>
-      {!currentUser && <Redirect to="/" />}
+      {/* {!currentUser && <Redirect to="/" />} */}
       <Route path="/cheeses/new">
         <CheeseCreate handleCreate={handleCreate} />
       </Route>

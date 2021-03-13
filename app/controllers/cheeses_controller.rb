@@ -46,6 +46,6 @@ class CheesesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cheese_params
-      params.require(:cheese).permit(:region, :type, :source, :description, :culinary_uses)
+      params.require(:cheese).permit(:name, :region, :origin, :source, :description, :culinary_uses)
     end
 end
