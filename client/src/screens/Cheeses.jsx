@@ -1,15 +1,25 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Cheeses(props) {
+export default function Cheeses(props) {
+  const { foods, handleDelete, currentUser } = props;
+
   return (
     <div>
-      {props.cheeses.map(cheese => (
-        <div>
-          <p>{cheese.name }</p>
-        </div>
+      <h3>Cheeses</h3>
+      {cheeses.map((cheese) => (
+        <React.Fragment key={cheese.id}>
+          <Link to={`/cheeses/${cheese.id}`}><p>{cheese.name}</p></Link>
+          { cheese.user_id === currentUser?.id &&
+            <>
+              <Link to={`/cheeses/${cheese.id}/edit`}><button>edit</button></Link>
+              <button onClick={() => handleDelete(cheese.id)}>delete</button>
+            </>
+          }
+        </React.Fragment>
       ))}
+      <br />
+      <Link to='/cheeses/new'><button>Create</button></Link>
     </div>
   )
 }
-
-export default Cheeses

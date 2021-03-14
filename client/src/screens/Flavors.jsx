@@ -1,11 +1,14 @@
 import React from 'react'
 
-function Flavors() {
+export default function Flavors(props) {
+  const { flavors } = props;
+
   return (
     <div>
-      
+      <h3>Flavors</h3>
+      {flavors.map((flavor) => (
+        <p key={flavor.id}>{flavor.name}</p>
+      ))}
     </div>
   )
 }
-
-export default Flavors
