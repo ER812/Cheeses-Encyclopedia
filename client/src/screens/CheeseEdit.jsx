@@ -6,7 +6,7 @@ export default function CheeseEdit(props) {
     name: ''
   });
   const { name } = formData;
-  const { foods, handleUpdate } = props;
+  const { cheeses, handleUpdate } = props;
   const { id } = useParams();
 
   useEffect(() => {

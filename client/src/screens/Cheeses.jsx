@@ -2,10 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Cheeses(props) {
-  const { foods, handleDelete, currentUser } = props;
+  const { cheeses, handleDelete, currentUser } = props;
 
   return (
     <div>
+      <div>
+      <Link to="/login"> Login </Link>
+      <Link to="register">Register</Link>'
+      </div>
       <h3>Cheeses</h3>
       {cheeses.map((cheese) => (
         <React.Fragment key={cheese.id}>
