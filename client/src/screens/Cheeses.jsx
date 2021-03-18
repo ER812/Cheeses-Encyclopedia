@@ -10,7 +10,7 @@ export default function Cheeses(props) {
       <Link to="/login"> Login </Link>
       <Link to="register">Register</Link>'
       </div>
-      <h3>Cheeses</h3>
+      <h2 className="loginAndRegister">Cheeses</h2>
       {cheeses.map((cheese) => (
         <React.Fragment key={cheese.id}>
           <Link to={`/cheeses/${cheese.id}`}><p>{cheese.name}</p></Link>

@@ -22,7 +22,7 @@ export default function Register(props) {
       e.preventDefault();
       handleRegister(formData);
     }}>
-      <h3>Register</h3>
+      <h3 className="loginAndRegister">Register</h3>
       <label>
         Username:
         <input

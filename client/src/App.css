@@ -1,3 +1,6 @@
 .paragraph {
   display: flex;
 }
+.loginAndRegister {
+  font-family: "Courier New", Courier, monospace;
+}
